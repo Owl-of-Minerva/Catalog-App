@@ -1,0 +1,42 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+
+
+<div class="row main-content">
+    <div class="col-md-1"></div>
+    <div class="col-md-4 vertical-line">
+        <h1>Categories</h1>
+        <ul>
+            {% for category in categories %}
+            <l> <a href="{{ url_for('showItems', category_name = category.name)}}">{{ category.name }} </a></l>
+            <br>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+
+
+    <div class="col-md-7">
+        {% if 'username' in session %}
+        <a href="{{ url_for('addItem')}}"> Add Item </a>
+        {% else %}
+        <p> Add Item (Log in to add)</p>
+        {% endif %}
+        <h1>Latest Items</h1>
+        <ul>
+            {% for item in latest_items %}
+            <l>
+                <a href="{{ url_for('showItem', category_name=item.category.name, item_name=item.name) }}">
+                {{ item.name }} ({{item.category.name}})
+                </a>
+            </l>
+            <br>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

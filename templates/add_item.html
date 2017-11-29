@@ -1,0 +1,30 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<form action="#" method="post">
+    <h1>Add Item</h1>
+    Title
+    <br>
+    <input type="text" name="name">
+    <br>
+    <br>
+    Description
+    <br>
+    <input type="text" name="description">
+    <br>
+    <br>
+    Category
+    <br>
+    <datalist id="categories">
+    {% for category in categories %}
+    <option value="{{category.name}}">
+    {% endfor %}
+    </datalist>
+
+    <input list="categories" name="category" placeholder="{{ categories[0].name}}">
+    <br>
+    <br>
+    <button type="submit">Add</button>
+</form>
+<a href="{{ url_for('showCatalog')}}">Go Back to Homepage</a>
+{% endblock %}

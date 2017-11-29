@@ -1,0 +1,18 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+{{ item.name }}
+<br>
+Description: {{ item.description}}
+<br>
+{% if user_id == item.user_id %}
+    <a href="{{ url_for('editItem', item_name=item.name) }}">Edit</a>
+    |
+    <a href="{{ url_for('deleteItem', item_name=item.name)}}">Delete</a>
+{% else %}
+<p>Edit | Delete (You cannot modify this item since you didn't add this item) </p>
+{% endif %}
+    <br>
+    <a href="{{ url_for('showCatalog')}}">Go Back to Homepage</a>
+
+{% endblock %}

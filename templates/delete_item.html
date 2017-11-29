@@ -1,0 +1,10 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<h1>Delete Items</h1>
+Are you sure you want to delete?
+<form action="#" method="post">
+    <input type="submit" value="Delete"/>
+</form>
+<a href="{{ url_for('showCatalog')}}">Go Back to Homepage</a>
+{% endblock %}
